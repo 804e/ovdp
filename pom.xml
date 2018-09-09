@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.overfight</groupId>
+    <artifactId>ovdp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ovdp_common</module>
+        <module>ovdp_demo</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>public-repositories</id>
+            <url>http://192.168.15.210:8081/nexus/content/repositories/public</url>
+        </repository>
+    </repositories>
+</project>
