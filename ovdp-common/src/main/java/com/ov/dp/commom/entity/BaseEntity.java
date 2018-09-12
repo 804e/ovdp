@@ -29,7 +29,7 @@ public class BaseEntity<ID extends Serializable> implements Persistable<String> 
 
 	@Override
 	public boolean isNew() {
-		return null != this.id;
+		return null == this.id;
 	}
 
 }
