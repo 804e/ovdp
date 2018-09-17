@@ -1,0 +1,21 @@
+debug: true
+spring:
+  application:
+    name: ovdp-ms-client-demo
+  cloud:
+    consul:
+      host: 192.168.15.170
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+        preferIpAddress: true
+    config:
+      discovery:
+        enabled: true
+        service-id: ovdp-demo
+      fail-fast: true
+      username: root
+      password: mpgroup
+      profile: demo
+
+      
