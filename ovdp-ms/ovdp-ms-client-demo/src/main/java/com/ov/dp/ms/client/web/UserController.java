@@ -1,12 +1,12 @@
 package com.ov.dp.ms.client.web;
 
-import java.net.URI;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.common.collect.Lists;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.ov.dp.auth.dto.User;
 
@@ -73,8 +74,9 @@ public class UserController {
              HttpEntity<String> entity = new HttpEntity<String>( headers);
 
              
-            ResponseEntity<User[]> forObject = this.restTemplate.exchange("http://ovdp-demo/user/all", HttpMethod.GET, entity, User[].class);
-            List<User> users = Arrays.asList(forObject.getBody());
+            ResponseEntity<String> forObject = this.restTemplate.exchange("http://ovdp-ms-server-demo/user/all", HttpMethod.GET, entity, String.class);
+            System.out.println(forObject.getBody());
+            List<User> users = Lists.newArrayList();
             return users == null ? new ArrayList<User>() : users;
         } catch (Exception e) {
             e.printStackTrace();

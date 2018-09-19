@@ -12,7 +12,7 @@ spring:
     config:
       discovery:
         enabled: true
-        service-id: ovdp-demo
+        service-id: ovdp-ms-config-server
       fail-fast: true
       username: root
       password: mpgroup

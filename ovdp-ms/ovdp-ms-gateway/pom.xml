@@ -2,8 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.overfight</groupId>
-    <artifactId>ovdp</artifactId>
+    <artifactId>ovdp-ms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>ovdp_gateway</artifactId>
+  <artifactId>ovdp-ms-gateway</artifactId>
 </project>
