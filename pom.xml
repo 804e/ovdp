@@ -11,6 +11,7 @@
         <module>ovdp-ms-client-demo</module>
         <module>ovdp-gateway</module>
         <module>ovdp-ms</module>
+        <module>ovdp-orm</module>
     </modules>
 
     <properties>

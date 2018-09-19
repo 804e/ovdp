@@ -1,4 +1,4 @@
-package com.ov.dp.commom.entity;
+package com.ov.dp.orm.jpa.entity;
 
 import java.io.Serializable;
 

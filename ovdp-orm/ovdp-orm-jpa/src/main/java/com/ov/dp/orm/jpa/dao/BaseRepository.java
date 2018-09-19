@@ -1,4 +1,4 @@
-package com.ov.dp.commom.dao;
+package com.ov.dp.orm.jpa.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;

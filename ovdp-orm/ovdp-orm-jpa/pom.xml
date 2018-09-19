@@ -2,20 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.overfight</groupId>
-        <artifactId>ovdp</artifactId>
+        <artifactId>ovdp-orm</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>ovdp-common</artifactId>
-    <packaging>jar</packaging>
-    
+    <artifactId>ovdp-orm-jpa</artifactId>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
     </dependencies>
-
 </project>

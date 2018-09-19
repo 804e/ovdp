@@ -5,7 +5,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.ov.dp.commom.entity.BaseEntity;
+import com.ov.dp.orm.jpa.entity.BaseEntity;
 
 @Entity
 @Access(AccessType.FIELD)

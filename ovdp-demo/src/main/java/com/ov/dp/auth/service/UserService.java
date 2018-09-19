@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.ov.dp.auth.dao.UserRepository;
 import com.ov.dp.auth.entity.UserEntity;
-import com.ov.dp.commom.dao.BaseRepository;
-import com.ov.dp.commom.service.BaseService;
+import com.ov.dp.orm.jpa.dao.BaseRepository;
+import com.ov.dp.orm.jpa.service.BaseService;
 
 @Service
 public class UserService extends BaseService<UserEntity, String> {

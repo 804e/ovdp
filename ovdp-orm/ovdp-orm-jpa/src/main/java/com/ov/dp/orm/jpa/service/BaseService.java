@@ -1,4 +1,4 @@
-package com.ov.dp.commom.service;
+package com.ov.dp.orm.jpa.service;
 
 import java.io.Serializable;
 
@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ov.dp.commom.dao.BaseRepository;
-import com.ov.dp.commom.entity.BaseEntity;
+import com.ov.dp.orm.jpa.dao.BaseRepository;
+import com.ov.dp.orm.jpa.entity.BaseEntity;
 
 /**
  * 基础数据库访问服务
