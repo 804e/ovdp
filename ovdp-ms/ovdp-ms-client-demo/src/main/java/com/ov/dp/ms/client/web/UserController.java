@@ -1,12 +1,19 @@
 package com.ov.dp.ms.client.web;
 
+import java.net.URI;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,8 +63,18 @@ public class UserController {
     @HystrixCommand(fallbackMethod = "userList")
     public List<User> users() {
         try {
-            User[] forObject = this.restTemplate.getForObject("http://ovdp-ms-server-demo/user/all", User[].class);
-            List<User> users = Arrays.asList(forObject);
+        	HttpHeaders headers = new HttpHeaders() {{
+                String auth = "root:mpgroup";
+                byte[] encodedAuth = Base64.encodeBase64( 
+                   auth.getBytes(Charset.forName("US-ASCII")) );
+                String authHeader = "Basic " + new String( encodedAuth );
+                set( "Authorization", authHeader );
+             }};
+             HttpEntity<String> entity = new HttpEntity<String>( headers);
+
+             
+            ResponseEntity<User[]> forObject = this.restTemplate.exchange("http://ovdp-demo/user/all", HttpMethod.GET, entity, User[].class);
+            List<User> users = Arrays.asList(forObject.getBody());
             return users == null ? new ArrayList<User>() : users;
         } catch (Exception e) {
             e.printStackTrace();

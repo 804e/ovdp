@@ -6,14 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RibbonClient(name = "ovdp-ms-server-demo", configuration = SayHelloConfiguration.class)
+@RibbonClients(value = { @RibbonClient(name = "ovdp-ms-server-demo", configuration = SayHelloConfiguration.class),
+		@RibbonClient(name = "ovdp-demo", configuration = SayHelloConfiguration.class)})
 //@ComponentScan(excludeFilters = { @ComponentScan.Filter(type = FilterType.ANNOTATION, value = ExtendRibbon.class) })
 //@EnableHystrix
 public class MsClientApplication {
