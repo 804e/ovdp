@@ -2,11 +2,9 @@ package com.ov.dp.ms.client.web;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -34,67 +32,65 @@ import io.swagger.annotations.ApiResponse;
 @RestController
 public class UserController {
 
-    @Autowired
-    private RestTemplate restTemplate;
+	@Autowired
+	private RestTemplate restTemplate;
 
-    @Autowired
-    private LoadBalancerClient loadBalancerClient;
+	@Autowired
+	private LoadBalancerClient loadBalancerClient;
 
-    /**
-     * @param id
-     * @return
-     */
-    @ApiOperation(value = "根据用户id查询用户信息", httpMethod = "GET", produces = "application/json")
-    @ApiResponse(code = 200, message = "success", response = User.class)
-    @GetMapping("/{id}")
-    @HystrixCommand(fallbackMethod="userFallbackMethod")
-    public User getUser(@ApiParam(name = "id", required = true, value = "用户Id") @PathVariable String id) {
-        return this.restTemplate.getForObject("http://ovdp-ms-server-demo/user/" + id, User.class);
-    }
+	/**
+	 * @param id
+	 * @return
+	 */
+	@ApiOperation(value = "根据用户id查询用户信息", httpMethod = "GET", produces = "application/json")
+	@ApiResponse(code = 200, message = "success", response = User.class)
+	@GetMapping("/{id}")
+	@HystrixCommand(fallbackMethod = "userFallbackMethod")
+	public User getUser(@ApiParam(name = "id", required = true, value = "用户Id") @PathVariable String id) {
+		return this.restTemplate.getForObject("http://ovdp-ms-server-demo/user/" + id, User.class);
+	}
 
-    public User userFallbackMethod(String id){
-        return null;
-    }
+	public User userFallbackMethod(String id) {
+		return null;
+	}
 
-    /**
-     * 这块ribbon不支持复杂数据类型list，所以要用数组接受，然后转list
-     * @return
-     */
-    @GetMapping("/list")
-    @HystrixCommand(fallbackMethod = "userList")
-    public List<User> users() {
-        try {
-        	HttpHeaders headers = new HttpHeaders() {{
-                String auth = "root:mpgroup";
-                byte[] encodedAuth = Base64.encodeBase64( 
-                   auth.getBytes(Charset.forName("US-ASCII")) );
-                String authHeader = "Basic " + new String( encodedAuth );
-                set( "Authorization", authHeader );
-             }};
-             HttpEntity<String> entity = new HttpEntity<String>( headers);
+	/**
+	 * 这块ribbon不支持复杂数据类型list，所以要用数组接受，然后转list
+	 * @return
+	 */
+	@GetMapping("/list")
+	@HystrixCommand(fallbackMethod = "userList")
+	public List<User> users() {
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			String auth = "root:mpgroup";
+			byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+			String authHeader = "Basic " + new String(encodedAuth);
+			headers.set("Authorization", authHeader);
+			HttpEntity<String> entity = new HttpEntity<String>(headers);
 
-             
-            ResponseEntity<String> forObject = this.restTemplate.exchange("http://ovdp-ms-server-demo/user/all", HttpMethod.GET, entity, String.class);
-            System.out.println(forObject.getBody());
-            List<User> users = Lists.newArrayList();
-            return users == null ? new ArrayList<User>() : users;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+			ResponseEntity<String> forObject = this.restTemplate.exchange("http://ovdp-ms-server-demo/user/all",
+					HttpMethod.GET, entity, String.class);
+			System.out.println(forObject.getBody());
+			List<User> users = Lists.newArrayList();
+			return users == null ? new ArrayList<User>() : users;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-    public List<User> userList() {
-        return null;
-    }
+	public List<User> userList() {
+		return null;
+	}
 
-    /**
-     * 通过服务id获取服务的地址
-     * @return
-     */
-    @GetMapping("ribbon")
-    public String ribbon(){
-        ServiceInstance serviceInstance = loadBalancerClient.choose("ovdp-ms-server-demo");
-        return serviceInstance.getUri().toString();
-    }
+	/**
+	 * 通过服务id获取服务的地址
+	 * @return
+	 */
+	@GetMapping("ribbon")
+	public String ribbon() {
+		ServiceInstance serviceInstance = loadBalancerClient.choose("ovdp-ms-server-demo");
+		return serviceInstance.getUri().toString();
+	}
 }
