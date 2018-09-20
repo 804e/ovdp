@@ -11,12 +11,15 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @RibbonClients(value = { @RibbonClient(name = "ovdp-ms-server-demo", configuration = SayHelloConfiguration.class),
 		@RibbonClient(name = "ovdp-demo", configuration = SayHelloConfiguration.class)})
 //@ComponentScan(excludeFilters = { @ComponentScan.Filter(type = FilterType.ANNOTATION, value = ExtendRibbon.class) })
 //@EnableHystrix
+@EnableSwagger2
 public class MsClientApplication {
 	@Autowired
 	private RestTemplateBuilder builder;
