@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.ov.dp.auth.dao.UserRepository;
 import com.ov.dp.auth.entity.UserEntity;
-import com.ov.dp.orm.jpa.dao.BaseRepository;
+import com.ov.dp.orm.jpa.dao.BaseDao;
 import com.ov.dp.orm.jpa.service.BaseService;
 
 @Service
@@ -15,7 +15,7 @@ public class UserService extends BaseService<UserEntity, String> {
 	private UserRepository userRepository;
 
 	@Override
-	protected BaseRepository<UserEntity, String> getRepository() {
+	protected BaseDao<UserEntity, String> getRepository() {
 		return userRepository;
 	}
 

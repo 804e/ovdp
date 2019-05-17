@@ -5,12 +5,12 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.ov.dp.orm.jpa.entity.BaseEntity;
+import com.ov.dp.orm.jpa.entity.BaseDO;
 
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "auth_user")
-public class UserEntity extends BaseEntity<String> {
+public class UserEntity extends BaseDO<String> {
 
 	public String account;
 

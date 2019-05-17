@@ -12,7 +12,8 @@
         <module>ovdp-gateway</module>
         <module>ovdp-ms</module>
         <module>ovdp-orm</module>
-    </modules>
+    <module>ovdp-uims</module>
+  </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,14 +54,14 @@
 
     <repositories>
         <repository>
-            <id>public-repositories</id>
-            <url>http://192.168.15.210:8081/nexus/content/repositories/public</url>
+            <id>aliyun-central</id>
+            <url>https://maven.aliyun.com/repository/central</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>public-repositories</id>
-            <url>http://192.168.15.210:8081/nexus/content/repositories/public</url>
+            <id>aliyun-central</id>
+            <url>https://maven.aliyun.com/repository/central</url>
         </pluginRepository>
     </pluginRepositories>
 

@@ -1,8 +1,8 @@
 package com.ov.dp.auth.dao;
 
 import com.ov.dp.auth.entity.UserEntity;
-import com.ov.dp.orm.jpa.dao.BaseRepository;
+import com.ov.dp.orm.jpa.dao.BaseDao;
 
-public interface UserRepository extends BaseRepository<UserEntity, String> {
+public interface UserRepository extends BaseDao<UserEntity, String> {
 
 }
