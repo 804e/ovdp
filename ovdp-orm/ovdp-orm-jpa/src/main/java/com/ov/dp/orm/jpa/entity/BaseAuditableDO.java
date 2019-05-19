@@ -1,11 +1,9 @@
-package com.ov.dp.orm.jpa.dao;
+package com.ov.dp.orm.jpa.entity;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-
-import com.ov.dp.orm.jpa.entity.BaseDO;
 
 /**
  * 审计字段基类
