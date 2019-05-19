@@ -1,7 +1,10 @@
 package com.ov.dp.uims.entity;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.ov.dp.orm.jpa.entity.BaseAuditableDO;
 
@@ -11,7 +14,10 @@ import com.ov.dp.orm.jpa.entity.BaseAuditableDO;
  * @author overfight
  *
  */
+@Access(AccessType.FIELD)
 @Entity
+@Table(name = "sys_user")
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class UserDO extends BaseAuditableDO {
 
 	@Column(name = "user_account")

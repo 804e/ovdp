@@ -43,7 +43,7 @@ public class UimsSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/assets/**", "/static/**", "/resources/**");
+		web.ignoring().antMatchers("/js/**", "/css/**", "/lib/**");
 	}
 
 	@Override
