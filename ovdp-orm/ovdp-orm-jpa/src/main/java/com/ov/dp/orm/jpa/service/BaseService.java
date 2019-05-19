@@ -11,6 +11,7 @@ import com.ov.dp.orm.jpa.entity.BaseDO;
 
 /**
  * 基础数据库访问服务
+ * 
  * @author wangweifeng
  *
  * @param <T>
@@ -25,6 +26,7 @@ public abstract class BaseService<T extends BaseDO, ID extends Serializable> {
 
 	/**
 	 * 创建数据保存数据之前额外操作回调方法 默认为空逻辑，子类根据需要覆写添加逻辑即可
+	 * 
 	 * @param entity 待创建数据对象
 	 */
 	protected void preInsert(T entity) {
@@ -33,6 +35,7 @@ public abstract class BaseService<T extends BaseDO, ID extends Serializable> {
 
 	/**
 	 * 更新数据保存数据之前额外操作回调方法 默认为空逻辑，子类根据需要覆写添加逻辑即可
+	 * 
 	 * @param entity 待更新数据对象
 	 */
 	protected void preUpdate(T entity) {
@@ -41,6 +44,7 @@ public abstract class BaseService<T extends BaseDO, ID extends Serializable> {
 
 	/**
 	 * 数据保存操作
+	 * 
 	 * @param entity
 	 * @return
 	 */
@@ -58,10 +62,21 @@ public abstract class BaseService<T extends BaseDO, ID extends Serializable> {
 
 	/**
 	 * 查询所有记录
+	 * 
 	 * @return
 	 */
 	public Iterable<T> findAll() {
 		return this.getDao().findAll();
+	}
+
+	/**
+	 * 根据id查询
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public T findOne(ID id) {
+		return this.getDao().findById(id).get();
 	}
 
 }

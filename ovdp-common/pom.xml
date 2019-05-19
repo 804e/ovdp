@@ -9,6 +9,10 @@
 	</parent>
 	<artifactId>ovdp-common</artifactId>
 	<packaging>jar</packaging>
+	
+	<properties>
+	   <swagger.version>2.7.0</swagger.version>
+	</properties>
 
 	<dependencies>
 
@@ -22,6 +26,18 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
+		
+		<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
 
 	</dependencies>
 

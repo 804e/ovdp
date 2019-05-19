@@ -16,10 +16,15 @@
     </modules>
     
     <properties>
-        <swagger.version>2.7.0</swagger.version>
     </properties>
     
     <dependencies>
+    
+        <dependency>
+            <groupId>com.overfight</groupId>
+            <artifactId>ovdp-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,10 +54,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
         <dependency>
@@ -65,17 +66,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
     </dependencies>
 
 </project>

@@ -2,9 +2,9 @@ package com.ov.dp.ms.client.web;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -63,8 +63,8 @@ public class UserController {
 	public List<User> users() {
 		try {
 			HttpHeaders headers = new HttpHeaders();
-			String auth = "root:mpgroup";
-			byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+			String auth = "root:fdsajkl;";
+			byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(Charset.forName("US-ASCII")));
 			String authHeader = "Basic " + new String(encodedAuth);
 			headers.set("Authorization", authHeader);
 			HttpEntity<String> entity = new HttpEntity<String>(headers);

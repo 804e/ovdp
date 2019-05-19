@@ -6,7 +6,7 @@
 
 1. 获取token
 
-post http://localhost:8080/uims/oauth/token?grant_type=password&username=admin&password=mpgroup&client_id=uims&client_secret=fdsajkl;
+post http://localhost:8080/uims/oauth/token?grant_type=password&username=admin&password=fdsajkl;&client_id=uims&client_secret=fdsajkl;
 
 返回
 ```

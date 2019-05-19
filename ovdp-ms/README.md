@@ -1,2 +1,3 @@
 # ovdp-ms
-overfight java develop platform microservice module
+
+配置中心、服务注册和发现中心

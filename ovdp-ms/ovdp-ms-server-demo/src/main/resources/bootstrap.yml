@@ -15,5 +15,5 @@ spring:
         service-id: ovdp-ms-config-server
       fail-fast: true
       username: root
-      password: mpgroup
+      password: fdsajkl;
       profile: demo
