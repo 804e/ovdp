@@ -46,7 +46,7 @@ public class UimsDaoAuthenticationProvider extends DaoAuthenticationProvider {
 
 				if (hideUserNotFoundExceptions) {
 					throw new BadCredentialsException(messageSource.getMessage(
-							"ucas.auth.fail.AccountNotFoundException", null, LocaleContextHolder.getLocale()));
+							"uims.auth.fail.AccountNotFoundException", null, LocaleContextHolder.getLocale()));
 				} else {
 					throw notFound;
 				}

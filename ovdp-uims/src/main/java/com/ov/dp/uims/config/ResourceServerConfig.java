@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
 /**
- * oauth resource server配置 ucas也提供用户菜单角色相关api
+ * oauth resource server配置 uims也提供用户菜单角色相关api
  * 
  * @author wangweifeng
  *
