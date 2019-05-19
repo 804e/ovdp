@@ -15,7 +15,7 @@ public class UserService extends BaseService<UserEntity, String> {
 	private UserRepository userRepository;
 
 	@Override
-	protected BaseDao<UserEntity, String> getRepository() {
+	protected BaseDao<UserEntity, String> getDao() {
 		return userRepository;
 	}
 

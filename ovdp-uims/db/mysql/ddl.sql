@@ -55,7 +55,6 @@ CREATE TABLE IF NOT EXISTS oauth_refresh_token (
 
 CREATE TABLE IF NOT EXISTS sys_user (
   id bigint unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_org bigint unsigned DEFAULT NULL COMMENT '所属组织',
   user_account varchar(100) NOT NULL COMMENT '用户帐号',
   user_name varchar(100) NOT NULL COMMENT '用户名',
   user_password varchar(100) NOT NULL COMMENT '密码',
