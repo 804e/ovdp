@@ -13,6 +13,7 @@
         <module>ovdp-ms</module>
         <module>ovdp-orm</module>
     <module>ovdp-uims</module>
+    <module>ovdp-web</module>
   </modules>
 
     <properties>
