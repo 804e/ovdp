@@ -7,20 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ov.dp.ms.server.config.DemoConfig;
+import com.ov.dp.ms.server.config.DemoServerConfig;
 
 @RefreshScope
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
 	
-	@Autowired
-    DemoConfig config;
+//	@Autowired
+//    DemoServerConfig config;
 
 
 	@GetMapping(path = "/add")
 	public String addNewUser(@RequestParam String account, @RequestParam String name, @RequestParam String email) {
-		return "Saved" + config.getTitle();
+		return "Saved"/* + config.getTitle()*/;
 	}
 
 	@GetMapping(path = "/all")
