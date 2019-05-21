@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import com.google.common.collect.Lists;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.ov.dp.auth.dto.User;
+import com.ov.dp.ms.client.service.UmisClientService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,9 @@ public class UserController {
 
 	@Autowired
 	private LoadBalancerClient loadBalancerClient;
+	
+	@Autowired
+	private UmisClientService umisClientService;
 
 	/**
 	 * @param id
@@ -47,7 +51,9 @@ public class UserController {
 	@GetMapping("/{id}")
 	@HystrixCommand(fallbackMethod = "userFallbackMethod")
 	public User getUser(@ApiParam(name = "id", required = true, value = "用户Id") @PathVariable String id) {
-		return this.restTemplate.getForObject("http://ovdp-ms-server-demo/user/" + id, User.class);
+		/*return this.restTemplate.getForObject("http://ovdp-ms-server-demo/user/" + id, User.class);*/
+		User user = this.umisClientService.getUser(id);
+		return user;
 	}
 
 	public User userFallbackMethod(String id) {
@@ -71,7 +77,6 @@ public class UserController {
 
 			ResponseEntity<String> forObject = this.restTemplate.exchange("http://ovdp-ms-server-demo/user/all",
 					HttpMethod.GET, entity, String.class);
-			System.out.println(forObject.getBody());
 			List<User> users = Lists.newArrayList();
 			return users == null ? new ArrayList<User>() : users;
 		} catch (Exception e) {
