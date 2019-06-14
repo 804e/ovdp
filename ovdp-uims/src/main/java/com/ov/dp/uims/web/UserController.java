@@ -1,5 +1,7 @@
 package com.ov.dp.uims.web;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +44,7 @@ public class UserController {
 	@ApiOperation(value = "根据用户id查询用户信息", httpMethod = "GET", produces = "application/json")
 	@ApiResponse(code = 200, message = "success", response = UserDO.class)
 	@GetMapping("/{id}")
-	public UserDO getUser(@ApiParam(name = "id", required = true, value = "用户Id") @PathVariable long id) {
+	public UserDO getUser(@ApiParam(name = "id", required = true, value = "用户Id") @PathVariable BigInteger id) {
 		return this.userService.findOne(id);
 	}
 

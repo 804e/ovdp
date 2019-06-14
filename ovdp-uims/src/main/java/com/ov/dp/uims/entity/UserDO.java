@@ -1,12 +1,14 @@
 package com.ov.dp.uims.entity;
 
+import java.math.BigInteger;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.ov.dp.orm.jpa.entity.BaseAuditableDO;
+import com.ov.dp.orm.jpa.entity.BaseDO;
 
 /**
  * 用户实体
@@ -18,7 +20,7 @@ import com.ov.dp.orm.jpa.entity.BaseAuditableDO;
 @Entity
 @Table(name = "sys_user")
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class UserDO extends BaseAuditableDO {
+public class UserDO extends BaseDO<BigInteger> {
 
 	@Column(name = "user_account")
 	private String account;

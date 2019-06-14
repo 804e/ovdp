@@ -17,7 +17,7 @@ import com.ov.dp.orm.jpa.entity.BaseDO;
  * @param <T>
  * @param <ID>
  */
-public abstract class BaseService<T extends BaseDO, ID extends Serializable> {
+public abstract class BaseService<T extends BaseDO<ID>, ID extends Serializable> {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 

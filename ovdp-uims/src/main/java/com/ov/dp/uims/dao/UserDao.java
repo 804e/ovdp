@@ -1,5 +1,7 @@
 package com.ov.dp.uims.dao;
 
+import java.math.BigInteger;
+
 import com.ov.dp.orm.jpa.dao.BaseDao;
 import com.ov.dp.uims.entity.UserDO;
 
@@ -9,7 +11,7 @@ import com.ov.dp.uims.entity.UserDO;
  * @author overfight
  *
  */
-public interface UserDao extends BaseDao<UserDO, Long> {
+public interface UserDao extends BaseDao<UserDO, BigInteger> {
 
 	/**
 	 * 根据帐号查找用户

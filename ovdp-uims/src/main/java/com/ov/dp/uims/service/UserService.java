@@ -1,5 +1,7 @@
 package com.ov.dp.uims.service;
 
+import java.math.BigInteger;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +20,13 @@ import com.ov.dp.uims.entity.UserDO;
  */
 @Service
 @Transactional
-public class UserService extends BaseService<UserDO, Long> {
+public class UserService extends BaseService<UserDO, BigInteger> {
 
 	@Autowired
 	private UserDao userDao;
 
 	@Override
-	protected BaseDao<UserDO, Long> getDao() {
+	protected BaseDao<UserDO, BigInteger> getDao() {
 		return userDao;
 	}
 
