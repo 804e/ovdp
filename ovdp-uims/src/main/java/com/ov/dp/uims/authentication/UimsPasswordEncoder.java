@@ -66,7 +66,7 @@ public class UimsPasswordEncoder implements PasswordEncoder {
 	public static void main(String[] args) {
 		UimsPasswordEncoder encoder = new UimsPasswordEncoder("MD5");
 		encoder.setCharacterEncoding("UTF-8");
-		System.out.println(encoder.encode("fdsajkl;"));
+		System.out.println(encoder.encode("admin"));
 	}
 
 	public String encode(CharSequence rawPassword) {

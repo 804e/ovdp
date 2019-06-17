@@ -91,7 +91,7 @@ public class UimsSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public UimsSimpleUrlAuthenticationFailureHandler authenticationFailureHandler() {
 		UimsSimpleUrlAuthenticationFailureHandler authenticationFailureHandler = new UimsSimpleUrlAuthenticationFailureHandler();
-		authenticationFailureHandler.setDefaultFailureUrl("/login?error");
+		authenticationFailureHandler.setDefaultFailureUrl("/login/error");
 		authenticationFailureHandler.setUseForward(true);
 		return authenticationFailureHandler;
 	}

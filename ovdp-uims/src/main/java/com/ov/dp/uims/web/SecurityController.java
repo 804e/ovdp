@@ -36,6 +36,11 @@ public class SecurityController {
 		return "login";
 	}
 	
+	@RequestMapping(value = "/login/error")
+    public String loginError() {
+        return "error/login-fail";
+    }
+	
 	/**
 	 * 首页
 	 * 
