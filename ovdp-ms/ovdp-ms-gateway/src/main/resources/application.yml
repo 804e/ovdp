@@ -1,26 +1,41 @@
 server:
   port: 80
 spring:
+  application:
+    name: gateway
   autoconfigure:
-    # TODO: remove when fixed https://github.com/spring-projects/spring-security/issues/6314
+# TODO: remove when fixed https://github.com/spring-projects/spring-security/issues/6314
     exclude: org.springframework.boot.actuate.autoconfigure.security.reactive.ReactiveManagementWebSecurityAutoConfiguration
   thymeleaf:
     cache: false
-  security:
-    oauth2:
-      client:
-        registration:
-          login-client:
-            provider: uaa
-            client-id: login-client
-            client-secret: secret
-            authorization-grant-type: authorization_code
-            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: openid,profile,email,resource.read
-        provider:
-          uaa:
-            authorization-uri: http://localhost:8090/uaa/oauth/authorize
-            token-uri: http://localhost:8090/uaa/oauth/token
-            user-info-uri: http://localhost:8090/uaa/userinfo
-            user-name-attribute: sub
-            jwk-set-uri: http://localhost:8090/uaa/token_keys
+  cloud:
+    config:
+      uri: http://localhost:8110/config
+    gateway:
+      discovery:
+        locator:
+#发现中心查找url
+          enabled: true
+#服务名小写
+          lower-case-service-id: true
+      routes:
+      - id: test_route
+        uri: lb://uims
+        predicates:
+        - Path=/uims/**
+      - id: test_eureka
+        uri: http://localhost:8080
+        predicates:
+        - Path=/uims2222/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8110/eureka/
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway

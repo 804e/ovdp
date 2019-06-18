@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.overfight</groupId>
+		<groupId>com.ov.dp</groupId>
 		<artifactId>ovdp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -19,19 +19,19 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.overfight</groupId>
+			<groupId>com.ov.dp</groupId>
 			<artifactId>ovdp-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>
-            <groupId>com.overfight</groupId>
+            <groupId>com.ov.dp</groupId>
             <artifactId>ovdp-web</artifactId>
             <version>${project.version}</version>
         </dependency>
 
 		<dependency>
-			<groupId>com.overfight</groupId>
+			<groupId>com.ov.dp</groupId>
 			<artifactId>ovdp-orm-jpa</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -68,11 +68,11 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency> -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
